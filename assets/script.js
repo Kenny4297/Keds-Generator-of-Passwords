@@ -51,7 +51,7 @@ const generatePassword = () => {
         count++;
       } 
 
-      if (specialCase === 'yes' && count < passwordCriteria) {
+      if (specialPrompt === 'yes' && count < passwordCriteria) {
         createSpecial();
         count++;
       } 
@@ -61,7 +61,7 @@ const generatePassword = () => {
         return solutionArray;
       }
   }
-  return `Your new password is \n ${solutionArray.join('')}`;
+  return `Your new password is \n ${solutionArray.join('')} \n \n Length of password: ${passwordCriteria} \n Lowercase character? ${lowercasePrompt} \n Uppercase characters? ${uppercasePrompt} \n Special Character? ${specialPrompt}`;
 }
 
 
@@ -77,6 +77,7 @@ function writePassword() {
   while (true) {
     passwordCriteria = prompt("How many characters would you like your password to be? Length must be between 8 and 128 characters long");
     console.log(`The passwordCriteria is ${passwordCriteria}.`)
+    window.alert(`Password length: ${passwordCriteria}. \n Got it.`)
     if (passwordCriteria >= 8 && passwordCriteria <= 128) {
       break;
     } else if (passwordCriteria === null) {
@@ -87,8 +88,9 @@ function writePassword() {
   }
 
   while (true) {
-    lowercasePrompt = prompt("Would you like to use lower case letters?").toLowerCase();
+    lowercasePrompt = prompt("Would you like to use lowercase characters?").toLowerCase();
     console.log(`The lowercase prompt is ${lowercasePrompt}`);
+    window.alert(`You said ${lowercasePrompt} to lowercase characters in your password... \n Understood!`)
     if (lowercasePrompt === 'yes' || lowercasePrompt === 'no') {
       break;
     } else if (lowercasePrompt === null) {
@@ -101,6 +103,7 @@ function writePassword() {
   while (true) {
     uppercasePrompt = prompt("Would you like to use uppercase letters?").toLowerCase();
     console.log(`The uppercase prompt is ${uppercasePrompt}`);
+    window.alert(`You said ${uppercasePrompt} to uppercase characters in your password... \n Heard that!`)
     if (uppercasePrompt === "yes" || uppercasePrompt === "no") {
       break;
     } else if (uppercasePrompt == null) {
@@ -113,6 +116,7 @@ function writePassword() {
   while (true) {
     numberPrompt = prompt("Would you like to use numbers?").toLowerCase();
     console.log(`The number Prompt is ${numberPrompt}`);
+    window.alert(`You said ${numberPrompt} to numbers in your password... \n Acknowledged!`)
     if (numberPrompt === "yes" || numberPrompt === "no") {
       break;
     } else if (numberPrompt == null) {
@@ -123,9 +127,11 @@ function writePassword() {
   }
 
   while (true) {
-    specialCase = prompt("Would you like to use special characters?").toLowerCase();
-    console.log(`The special case prompt is ${specialCase}`);
-    if (specialCase === "yes" || specialCase === "no") {
+    specialPrompt = prompt("Would you like to use special characters?").toLowerCase();
+    console.log(`The special case prompt is ${specialPrompt}`);
+    window.alert(`You said ${specialPrompt} to special characters in your password... \n Rodger!`)
+
+    if (specialPrompt === "yes" || specialPrompt === "no") {
       break;
     } else if (passwordCriteria == null) {
       break;
