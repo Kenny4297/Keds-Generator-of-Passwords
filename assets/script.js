@@ -1,6 +1,6 @@
 // Assignment code here
 
-//This section 
+//The list of possible characters for each criteria 
 const lowercaseLettersString = 'abcdefghijklmnopqrstuvwxyz';
 
 const uppercaseLettersString = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -32,6 +32,7 @@ const createSpecial = () => {
 
 //Generate the password
 const generatePassword = () => {
+  //Where the password will be pushed to as it gets pieced together
   solutionArray = [];
   count = 0
   while (count < passwordCriteria) {
