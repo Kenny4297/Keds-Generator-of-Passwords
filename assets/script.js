@@ -1,21 +1,6 @@
 // Assignment code here
-let checkboxes = document.querySelectorAll(".checkbox");
-let parametersSection = document.querySelector(".user-choice-section");
-let selectedCheckboxes = [];
 
-for (let checkbox of checkboxes) {
-  //I create a shortcut; I add an eventListener to all the checkboxes, looking for any that are clicked
-  checkbox.addEventListener('click', () => {
-    console.log(this.checked);
-    if(this.checked === true) {
-      //I now add those checked boxes to the 'selectedCheckboxes' array.
-      console.log(this.value);
 
-    } else {
-      console.log("test failed?")
-    }
-  })
-}
 
 const generatePassword = () => {
 
@@ -28,8 +13,46 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
+  
+  while (true) {
+    passwordCriteria = prompt("How many characters would you like your password to be? Length must be between 8 and 128 characters long");
+    if (passwordCriteria >= 8 && passwordCriteria <= 128) {
+      // console.log("number test Passed");
+      // console.log(passwordCriteria);
+      break;
+    } else if (passwordCriteria === null) {
+        break;
+      } else {
+      window.alert("Try again! The length needs to be more than 8 characters and less than 128!");
+    }
+  }
 
-  parametersSection.style.display = 'block';
+  while (true) {
+    uppercasePrompt = prompt("Would you like to use uppercase letters?").toLowerCase();
+    console.log(uppercasePrompt);
+    if (uppercasePrompt === "yes" || uppercasePrompt === "no") {
+      // console.log("uppercase test passed")
+      break;
+    } else if (passwordCriteria == null) {
+      break;
+    } else {
+      window.alert("Please enter either 'yes' or 'no'")
+    }
+  }
+
+  while (true) {
+    specialCase = prompt("Would you like to use special characters?").toLowerCase();
+    console.log(specialCase);
+    if (specialCase === "yes" || specialCase === "no") {
+      // console.log("special char test passed")
+      break;
+    } else if (passwordCriteria == null) {
+      break;
+    } else {
+      window.alert("Please enter either 'yes' or 'no'")
+    }
+  }
+
 
   passwordText.value = password;
 
