@@ -1,38 +1,8 @@
 // Assignment code here
 
-//The list of possible characters for each criteria 
-const lowercaseLettersString = 'abcdefghijklmnopqrstuvwxyz';
-
-const uppercaseLettersString = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-const numbersString = '1234567890';
-
-const specialCharactersString = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}";
-
-//Functions to create a character and push to to the 'soon to be' password
-const createLowercaseLetter = () => {
-  let lowercaseLetter = Math.floor(Math.random() * lowercaseLettersString.length);
-  solutionArray.push(lowercaseLettersString[lowercaseLetter]);
-}
-
-const createUppercaseLetter = () => {
-  let uppercaseLetter = Math.floor(Math.random() * uppercaseLettersString.length);
-  solutionArray.push(uppercaseLettersString[uppercaseLetter]);
-}
-
-const createNumber = () => {
-  let numberChoice = Math.floor(Math.random() * numbersString.length);
-  solutionArray.push(numbersString[numberChoice]);
-}
-
-const createSpecial = () => {
-  let specialChoice = Math.floor(Math.random() * specialCharactersString.length);
-  solutionArray.push(specialCharactersString[specialChoice]);
-}
-
 //Generate the password
 const generatePassword = () => {
-  //Where the password will be pushed to as it gets pieced together
+  //Where the password will be pushed to as it gets pieced together. See 'helper.js' for the created functions
   solutionArray = [];
   count = 0
   while (count < passwordCriteria) {
@@ -62,9 +32,8 @@ const generatePassword = () => {
         return solutionArray;
       }
   }
-  return `Your new password is \n ${solutionArray.join('')} \n \n Length of password: ${passwordCriteria} \n Lowercase character? ${lowercasePrompt} \n Uppercase characters? ${uppercasePrompt} \n Numbers? ${numberPrompt} \n Special Character? ${specialPrompt}`;
+  return `Your new password is: \n ${solutionArray.join('')} \n \n Length of password: ${passwordCriteria} \n Lowercase character? ${lowercasePrompt} \n Uppercase characters? ${uppercasePrompt} \n Numbers? ${numberPrompt} \n Special Character? ${specialPrompt}`;
 }
-
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -74,78 +43,18 @@ function writePassword() {
 
   var passwordText = document.querySelector("#password");
 
-  //Here we check for user client validation regarding the prompts 
-  while (true) {
-    passwordCriteria = prompt("How many characters would you like your password to be? Length must be between 8 and 128 characters long");
-    console.log(`The passwordCriteria is ${passwordCriteria}.`)
-    if (passwordCriteria >= 8 && passwordCriteria <= 128) {
-      window.alert(`Password length: ${passwordCriteria}. \n Got it.`)
-      break;
-    } else if (passwordCriteria === null) {
-      break;
-    } else {
-      window.alert("Try again! The length needs to be more than 8 characters and less than 128!");
-    }
-  }
+  //Call the user prompts (found in helper functions)
+  gatherPasswordCriteria();
+  gatherLowercasePrompt();
+  gatherUppercasePrompt();
+  gatherNumberPrompt();
+  gatherSpecialPrompt();
 
-  while (true) {
-    lowercasePrompt = prompt("Would you like to use lowercase characters?").toLowerCase();
-    console.log(`The lowercase prompt is ${lowercasePrompt}`);
-    if (lowercasePrompt === 'yes' || lowercasePrompt === 'no') {
-      window.alert(`You said ${lowercasePrompt} to lowercase characters in your password... \n Understood!`)
-      break;
-    } else if (lowercasePrompt === null) {
-      break;
-    } else {
-      window.alert("Please enter either 'yes' or 'no'")
-    }
-  }
-
-  while (true) {
-    uppercasePrompt = prompt("Would you like to use uppercase letters?").toLowerCase();
-    console.log(`The uppercase prompt is ${uppercasePrompt}`);
-    if (uppercasePrompt === "yes" || uppercasePrompt === "no") {
-      window.alert(`You said ${uppercasePrompt} to uppercase characters in your password... \n Heard that!`)
-      break;
-    } else if (uppercasePrompt == null) {
-      break;
-    } else {
-      window.alert("Please enter either 'yes' or 'no'")
-    }
-  }
-
-  while (true) {
-    numberPrompt = prompt("Would you like to use numbers?").toLowerCase();
-    console.log(`The number Prompt is ${numberPrompt}`);
-    if (numberPrompt === "yes" || numberPrompt === "no") {
-    window.alert(`You said ${numberPrompt} to numbers in your password... \n Acknowledged!`)
-      break;
-    } else if (numberPrompt == null) {
-      break;
-    } else {
-      window.alert("Please enter either 'yes' or 'no'")
-    }
-  }
-
-  while (true) {
-    specialPrompt = prompt("Would you like to use special characters?").toLowerCase();
-    console.log(`The special case prompt is ${specialPrompt}`);
-    if (specialPrompt === "yes" || specialPrompt === "no") {
-    window.alert(`You said ${specialPrompt} to special characters in your password... \n Rodger!`)
-      break;
-    } else if (passwordCriteria == null) {
-      break;
-    } else {
-      window.alert("Please enter either 'yes' or 'no'")
-    }
-  }
-
-  console.log(generatePassword());
+  // console.log(generatePassword());
   var password = generatePassword();
 
   passwordText.value = password;
 }
-
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);

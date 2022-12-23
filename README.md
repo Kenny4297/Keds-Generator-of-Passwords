@@ -15,4 +15,4 @@ The following is a link to the GitPages site:
  [JavaScript Quiz Website](https://kenny4297.github.io/Password-Generator/)
 
 The following is a screen shot of the final product:
-![Screenshot](./assets/images/javascriptquizscreenshot.png)
+![Screenshot](./assets/images/passwordGeneratorScreenShotFinal.png)
