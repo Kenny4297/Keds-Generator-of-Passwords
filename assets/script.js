@@ -1,5 +1,3 @@
-// Assignment code here
-
 //Generate the password
 const generatePassword = () => {
   //Where the password will be pushed to as it gets pieced together. See 'helper.js' for the created functions
@@ -58,5 +56,7 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+
 
 

@@ -1,4 +1,4 @@
-# Kedgard's JavaScript Password Generator
+# Password Generator
 
 ## What is this project?
 This is a website that can assist a client when creating a password. The website prompts the client for certain character criteria and validates each of their choices. Once all the prompts have been answered, a password is outputted to the screen. I have also included a list of all the criteria that the client had entered as a reminder for easy comparison.
